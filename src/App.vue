@@ -6,6 +6,8 @@
 </template>
 
 <script>
+
+
 import Wrap from './components/MainWrapper.vue';
 
 export default {

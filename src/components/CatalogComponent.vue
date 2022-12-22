@@ -10,8 +10,10 @@
 
         <h1>Catalog</h1>
         <div class="catalogComponent__list">
-            <CatalogItem v-for="product in PRODUCTS" :key="product.produktID" v-bind:product-data="product"
-                @addToCart="addChildArticle" />
+            <CatalogItem v-for="product in filteredBooks"
+             :key="product.produktID" 
+             v-bind:product-data="product"
+            @addToCart="addChildArticle" />
         </div>
 
     </div>
@@ -34,39 +36,41 @@ export default {
     data() {
         return {
             title: 'Main Wrapper',
-            // products: [],
-            timestamp: ""
+            products: [],
+            timestamp: "",
+            BookSearch:""
         }
     },
     computed: {
         ...mapGetters([
             'PRODUCTS',
             'CART',
+            'SEARCH_VALUE'
         ]),
+        filteredBooks: function () {
+            return this.PRODUCTS.filter((product) => {
+              return product.Produkttitel.toLowerCase().match(this.BookSearch) || product.Autorname.toLowerCase().match(this.BookSearch) || product.Verlagsname.toLowerCase().match(this.BookSearch);
+      });
+    },
+    },
+    watch: {
+        SEARCH_VALUE(){
+            this.productBySearchValue(this.SEARCH_VALUE);
+        }
 
     },
-    watch: {},
 
     methods: {
         ...mapActions([
             'GET_PRODUCTS_FROM_API_PHP',
             'ADD_TO_CART'
         ]),
-        // fetchData() {
 
-        //     fetch("https://iws107.informatik.htw-dresden.de/ewa/g11/PHP/beleg_fetch.php")
-        //         .then(response => response.json())
-        //         .then((data) => {
-        //             this.products = data;
-        //         })
-        // },
-        // increase(index) {
-        //     this.products[index].quantity++;
-        // },
-        // decrease(index) {
-        //     if (this.products[index].quantity > 0)
-        //         this.products[index].quantity--;
-        // },
+        productBySearchValue(value){  
+          this.BookSearch = value.toLowerCase();
+          console.log("search",this.BookSearch );
+        },
+
         now() {
             const today = new Date();
             const date = today.getDate()
@@ -92,10 +96,13 @@ export default {
     mounted() {
         // this.fetchData();
         this.GET_PRODUCTS_FROM_API_PHP();
+        this.products = this.PRODUCTS;
     },
 
 }
 </script>
+
+
 
 <style lang="scss">
 .catalogComponent {
@@ -103,11 +110,13 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        // align-items: center;
+        max-width: 900px;
+        //align-items: center;
+        margin: 0 auto;
     }
 
     &__linkToCart {
-        position: absolute;
+        position: fixed;
         top: 10px;
         right: 10px;
         padding: $padding;

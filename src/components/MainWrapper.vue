@@ -48,7 +48,8 @@ export default {
 
 <style scoped>
 .MainWrapper {
-    max-width: 900px;
+    max-width: 80%;
+    background-color: #fcf8f5 ;
     margin: 0 auto;
 }
 </style>

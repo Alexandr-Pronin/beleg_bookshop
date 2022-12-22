@@ -101,6 +101,7 @@ export default {
         justify-content: center;
         background-color: rgb(3, 87, 59);
         color: azure;
+        
     }
     .cartcomponent__totalText{
     margin: $margin;

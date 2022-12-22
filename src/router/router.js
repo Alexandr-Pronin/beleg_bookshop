@@ -9,13 +9,13 @@ let router = new Router({
     // base: '/',
     // mode: 'history',
     routes: [
+        // {
+        //     path: '/',
+        //     name: 'home',
+        //     component: Home
+        // },
         {
             path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/catalog',
             name: 'catalog',
             component: CatalogComponent
         },

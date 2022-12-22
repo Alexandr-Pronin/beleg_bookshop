@@ -9,6 +9,7 @@ Vue.use(Vuex);
 let store = new Vuex.Store({
 
     state: {
+        searchValue:'',
         products: [],
         cart: []
     },
@@ -89,6 +90,9 @@ let store = new Vuex.Store({
                 });}
             
         },
+        SET_SEARCH_VALUE:(state,value)=>{
+            state.searchValue=value;
+        }
     },
 
     actions: {
@@ -121,6 +125,9 @@ let store = new Vuex.Store({
         },
         DELETE_FROM_CART({ commit }, index) {
             commit('REMOVE_FROM_CART', index);
+        },
+        GET_SEARCH({commit},value){
+            commit('SET_SEARCH_VALUE',value);
         }
 
     },
@@ -131,6 +138,9 @@ let store = new Vuex.Store({
         },
         CART(state) {
             return state.cart;
+        },
+        SEARCH_VALUE(state){
+            return state.searchValue;
         }
     },
 

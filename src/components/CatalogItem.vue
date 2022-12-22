@@ -3,7 +3,7 @@
     <img class="CatalogItem__image" :src=productData.LinkGrafik>
     <p class="CatalogItem__name">{{ productData.Produkttitel }}</p>
     <p class="CatalogItem__price">{{ productData.PreisNetto }} Euro</p>
-    <button class="CatalogItem__add btn" @click="sendDataToParent">Add to Cart</button>
+    <button class="CatalogItem__add btn" @click="addToCart">Add to Cart</button>
     </div>
     </template>
      
@@ -28,7 +28,10 @@
     
         },
         methods:{
-            sendDataToParent(){
+            // sendDataToParent(){
+            //     this.$emit('addToCart', this.productData);
+            // }
+            addToCart(){
                 this.$emit('addToCart', this.productData);
             }
         },

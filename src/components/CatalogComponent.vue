@@ -3,7 +3,7 @@
         <h1>Catalog</h1>
         <div class="CatalogComponent__list">
             <CatalogItem v-for="product in PRODUCTS" :key="product.produktID" v-bind:product-data="product"
-                @addToCart="showChildArticle" />
+                @addToCart="addChildArticle" />
         </div>
 
     </div>
@@ -40,7 +40,8 @@ export default {
 
     methods: {
         ...mapActions([
-            'GET_PRODUCTS_FROM_API_PHP'
+            'GET_PRODUCTS_FROM_API_PHP',
+            'ADD_TO_CART'
         ]),
         // fetchData() {
 
@@ -50,13 +51,13 @@ export default {
         //             this.products = data;
         //         })
         // },
-        increase(index) {
-            this.products[index].quantity++;
-        },
-        decrease(index) {
-            if (this.products[index].quantity > 0)
-                this.products[index].quantity--;
-        },
+        // increase(index) {
+        //     this.products[index].quantity++;
+        // },
+        // decrease(index) {
+        //     if (this.products[index].quantity > 0)
+        //         this.products[index].quantity--;
+        // },
         now() {
             const today = new Date();
             const date = today.getDate()
@@ -68,9 +69,10 @@ export default {
             const dateTime = "Date: " + date + ' Time: ' + time;
             this.timestamp = dateTime;
         },
-        showChildArticle(data) {
+        addChildArticle(data) {
             console.log("ADD: ", data);
             // this.$emit('addToCartFromCatalog', this.productAddToCart);
+            this.ADD_TO_CART(data);
         }
     },
 

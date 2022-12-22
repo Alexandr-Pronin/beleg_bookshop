@@ -1,17 +1,29 @@
 <template>
-    <div class="CartComponent" v-if="cart.length">
+    <div class="CartComponent">
         <h1>Cart</h1>
-        <CartItem/>
+        <CartItem
+        v-for="(item,index) in cartData"
+        :key="item.product.ProduktID"
+        :cart-item-data="item"
+        @deleteFromCart="deleteFromCart(index)"/>
     </div>
 </template>
 
 <script>
 import CartItem from './CartItem.vue';
+import { mapActions } from 'vuex';
 
 export default {
     name: 'CartComponent',
     components: { CartItem },
-    props: {},
+    props: {
+        cartData:{
+            type: Array,
+            default(){
+                return []
+            }
+        }
+    },
     data() {
         return {
            cart:[],
@@ -20,10 +32,15 @@ export default {
     computed: {
 
     },
-    methods: {},
+    methods: {
+        ...mapActions(['DELETE_FROM_CART']),
+        deleteFromCart(index){
+            this.DELETE_FROM_CART(index);
+        }
+    },
     watch: {},
     mounted() {
-        console.log("cart..");
+        console.log("cart component mounted..");
     }
 
 }

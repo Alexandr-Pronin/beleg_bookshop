@@ -1,8 +1,10 @@
 <template>
     <div class="MainWrapper">
-        <p>{{ title }}</p>    
-        <Catalog/>
-        <Cart/>
+        <p>{{ title }}</p>
+        <Catalog />
+        <Cart v-if="CART.length"
+        :cart-data="CART"
+        />
     </div>
 </template>
 
@@ -10,6 +12,7 @@
 import { computed } from 'vue';
 import Catalog from './CatalogComponent.vue';
 import Cart from './CartComponent.vue';
+import { mapGetters } from 'vuex';
 
 
 export default {
@@ -23,12 +26,16 @@ export default {
             title: 'Main Wrapper'
         }
     },
-    computed:{
+    computed: {
+
+        ...mapGetters([
+            'CART'
+        ])
 
     },
-    methods:{},
-    watch:{},
-    mounted(){
+    methods: {},
+    watch: {},
+    mounted() {
         console.log("jo geht..");
     }
 }

@@ -3,6 +3,7 @@
     <img class="CatalogItem__image" :src=productData.LinkGrafik>
     <p class="CatalogItem__name">{{ productData.Produkttitel }}</p>
     <p class="CatalogItem__price">{{ productData.PreisNetto }} Euro</p>
+    <p class="CatalogItem__price"> Lagerbestand: {{ productData.Lagerbestand }}</p>
     <button class="CatalogItem__add btn" @click="addToCart">Add to Cart</button>
     </div>
     </template>

@@ -1,7 +1,15 @@
 <template>
-    <div class="CatalogComponent">
+    <div class="catalogComponent">
+        <KeepAlive>
+            <RouterLink :to="{ name: 'cart', params: { cartData: CART } }">
+                <div class="catalogComponent__linkToCart"> Korb: {{ CART.length }}</div>
+            </RouterLink>
+        </KeepAlive>
+
+
+
         <h1>Catalog</h1>
-        <div class="CatalogComponent__list">
+        <div class="catalogComponent__list">
             <CatalogItem v-for="product in PRODUCTS" :key="product.produktID" v-bind:product-data="product"
                 @addToCart="addChildArticle" />
         </div>
@@ -32,7 +40,8 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'PRODUCTS'
+            'PRODUCTS',
+            'CART',
         ]),
 
     },
@@ -89,12 +98,20 @@ export default {
 </script>
 
 <style lang="scss">
-.CatalogComponent {
+.catalogComponent {
     &__list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         // align-items: center;
+    }
+
+    &__linkToCart {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: $padding;
+        border: solid 1px;
     }
 }
 </style>

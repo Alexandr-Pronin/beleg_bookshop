@@ -4,14 +4,22 @@
          <div class="cartitem__info">
             <p>{{ cartItemData.product.Produkttitel }}</p>
             <p>{{  cartItemData.product.PreisNetto }}</p>
-            <p>{{  cartItemData.count}}</p>
          </div>
-         <div class="cartitem_qnt"></div>
+         <div class="cartitem_qnt">
+            <span>
+                <span class="qnt__button" @click="decrement">-</span>
+                <p>{{  cartItemData.count}}</p>
+                <span class="qnt__button" @click="increment">+</span>
+            </span>
+         </div>
          <button @click="deleteFromCart">Delete</button>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
+
     export default {
         name: 'CartItem',    
         components: {},
@@ -33,8 +41,15 @@
     
         },
         methods:{
+ 
             deleteFromCart(){
                 this.$emit('deleteFromCart')
+            },
+            increment(){
+                this.$emit('increment');
+            },
+            decrement(){
+                this.$emit('decrement');
             }
         },
         watch:{},
@@ -57,6 +72,10 @@
         margin-bottom: $margin;
         &__image{
             max-width: 50px;
+        }
+
+        .qnt__button{
+            cursor: pointer;
         }
     }
 </style>

@@ -70,6 +70,25 @@ let store = new Vuex.Store({
             state.cart[index].product.Lagerbestand = state.cart[index].product.Lagerbestand + state.cart[index].count;
             state.cart.splice(index, 1);
         },
+
+        INCREASE: (state,index)=>{
+            state.cart[index].count++;
+
+            state.cart.map(function (item) {
+                if (item.product.ProduktID === state.cart[index].product.ProduktID)
+                    item.product.Lagerbestand--;
+            })
+        },
+
+        DECREASE: (state,index)=>{
+            if(state.cart[index].count > 1){
+                state.cart[index].count--;
+                state.cart.map(function (item) {
+                    if (item.product.ProduktID === state.cart[index].product.ProduktID)
+                        item.product.Lagerbestand++;
+                });}
+            
+        },
     },
 
     actions: {
@@ -88,15 +107,16 @@ let store = new Vuex.Store({
             //     return products;
             // }).catch((error)=>{console.log(error)}); 
         },
-        INCREASE(index) {
-            this.products[index].quantity++;
+        INCREASE_ITEM({commit},index) {
+            // this.products[index].quantity++;
+            commit('INCREASE',index);
         },
-        DECREASE(index) {
-            if (this.products[index].quantity > 0)
-                this.products[index].quantity--;
+        DECREASE_ITEM({commit},index) {
+            // if (this.products[index].quantity > 0)
+            //     this.products[index].quantity--;
+            commit('DECREASE',index);
         },
         ADD_TO_CART({ commit }, product) {
-            console.log("set cart");
             commit('SET_CART', product);
         },
         DELETE_FROM_CART({ commit }, index) {

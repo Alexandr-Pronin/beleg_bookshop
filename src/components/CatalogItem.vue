@@ -58,6 +58,9 @@
         margin-bottom: $margin;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 10px;
+        margin-right: 40px;
+        background: white;
         &__image{
             width: 100px;
         }
@@ -65,7 +68,7 @@
     }
     .btn{
     padding: $padding 16px;
-    background: green;
+    background: #ce3232;
     color: beige;
     border:0;
     border-radius: $radius;

@@ -46,9 +46,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .MainWrapper {
-    max-width: 80%;
+    max-width: $width;
     background-color: #fcf8f5 ;
     margin: 0 auto;
 }

@@ -25,6 +25,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 75px;
-  background-color: #D3C3B6;
+  background-color: transparent;
 }
 </style>

@@ -22,10 +22,10 @@
                         </svg>
                     </div>
                     <input type="search" id="default-search"
-                        class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Suchen nach Buch, Autor..." v-model="searchValue" required>
                     <button type="submit" @click="search(searchValue)"
-                        class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                        class="text-white absolute right-2.5 bottom-2.5 bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
 
@@ -49,6 +49,8 @@
 import { RouterLink } from 'vue-router';
 import { mapActions, mapGetters } from 'vuex';
 
+import '../index.css'
+
 export default {
     name: "MainHeader",
     props: {},
@@ -68,6 +70,7 @@ export default {
         ]),
         search(value) {
             this.GET_SEARCH(value);
+            this.$router.push('/');
         }
     },
     computed: {
@@ -78,17 +81,17 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .mainHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fcf8f5;
+    background-color: #fbd7d7;
     // padding: 16px;
     position: fixed;
-    width: 100%;
+    width: $width;
     top: 0;
-    left: 0;
+    // left: 0;
 
     img {
         width: 150px;
@@ -99,9 +102,11 @@ export default {
         position: relative;
         // right: 200px;
         margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        width: 60rem;
+        padding-right: 190px;
     }
 
     .search_button {

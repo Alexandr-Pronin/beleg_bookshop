@@ -50,7 +50,7 @@
     
     <style lang="scss">
     .CatalogItem{
-        flex-basis: 25%; //max 25% breite
+        flex-basis: 20%; //max 25% breite
         display: flex;
         flex-direction: column;
         box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.329);
@@ -62,7 +62,7 @@
         margin-right: 40px;
         background: white;
         &__image{
-            width: 100px;
+            width: 100%;
         }
 
     }
@@ -81,4 +81,5 @@
         border:0;
         border-radius: $radius;
     }
+
     </style>

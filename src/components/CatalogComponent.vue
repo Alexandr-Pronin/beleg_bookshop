@@ -36,19 +36,26 @@
 
         </div>
 
+        <DataView :value="211231" layout="grid" :paginator="true" :lazy="true" :rows="12">
+        ewrwer
+    </DataView>
+
+
     </div>
 </template>
 
 <script>
 import CatalogItem from './CatalogItem.vue';
 import { mapActions, mapGetters } from 'vuex';
-
+import DataView from 'primevue/dataview';
+				
 
 
 export default {
     name: 'CatalogComponent',
     components: {
-        CatalogItem
+        CatalogItem,
+        DataView
     },
     props: {
 

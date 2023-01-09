@@ -136,7 +136,14 @@ export default {
     max-width: 400px;
     margin: 0 auto;
 }
-
+.flow-root{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    align-content: center;
+}
 .subtotal {
     // display: flex;
     // flex-direction: column;

@@ -3,7 +3,7 @@
 
     <div class="mainHeader">
         <RouterLink :to="{ name: 'catalog' }">
-            <img src="../assets/logo.jpg">
+            <img src="https://ivm108.informatik.htw-dresden.de/ewa/g10/beleg/logo.jpg">
         </RouterLink>
         <div class="searchField">
 

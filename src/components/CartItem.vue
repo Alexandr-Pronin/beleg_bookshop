@@ -13,17 +13,17 @@
             <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
                 <button data-action="decrement" @click="decrement"
                     class=" bg-red-300 text-red-600 hover:text-red-700 hover:bg-red-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                    <span class="m-auto text-2xl font-thin" @click="decrement">−</span>
+                    <span class="m-auto text-2xl font-thin" >−</span>
                 </button>
                    <p  class="outline-none focus:outline-none text-center justify-center  w-full bg-red-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-red-700  outline-none"
                    > {{cartItemData.count }}</p>
                 <button data-action="increment"  @click="increment"
                     class="bg-red-300 text-red-600 hover:text-red-700 hover:bg-red-400 h-full w-20 rounded-r cursor-pointer">
-                    <span class="m-auto text-2xl font-thin"  @click="increment">+</span>
+                    <span class="m-auto text-2xl font-thin"  >+</span>
                 </button>
             </div>
         </div>
-        <button type="button" @click="deleteFromCart" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Löschen</button>
+        <button type="button" @click="deleteFromCart" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 del-button">Löschen</button>
 
             
             <!-- <div class="cartitem_qnt">
@@ -91,6 +91,9 @@ export default {
 </script>
 
 <style lang="scss" >
+.del-button{
+    margin: 25px 15px;
+}
 .cartitem {
     display: flex;
     justify-content: space-between;
@@ -100,7 +103,7 @@ export default {
     padding: $padding;
     margin-bottom: $margin;
     flex-direction: row;
-    width: 40%;
+    width: 55%;
 
     &__image {
         max-width: 50px;

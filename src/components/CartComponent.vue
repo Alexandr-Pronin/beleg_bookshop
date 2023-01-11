@@ -102,21 +102,30 @@ export default {
             'DECREASE_ITEM'
         ]),
         goToStripe() {
-            // window.open(
-            //     "https://iws107.informatik.htw-dresden.de/ewa/g11/PHP/Stripe/receive_order.php?order=" +
-            //     this.cart_string.slice(0, -1)
-            // );
+          
             // console.log("wwwwwwwwwwwwwW", this.cart_string.slice(0, -1));
-            const data = ['item1', 'item2', 'item3'];
-            const params = new URLSearchParams();
-            params.append('data', JSON.stringify(data));
-            const url = `https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/Standalone_stripe_redirect.php?${params}`;
 
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    // Handle the response
-                });
+            // const items = [
+            //     { name: 'item 1', price: 100 },
+            //     { name: 'item 2', price: 200 },
+            //     { name: 'item 3', price: 300 },
+            // ];
+            const string = JSON.stringify(this.cartData);
+            // const options = {
+            //     method: 'POST',
+            //     body: JSON.stringify({ items }),
+            //     headers: { 'Content-Type': 'application/json' },
+            // };
+            // fetch('https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/index_einkauf_per_Link.php', options)
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         // Handle the response
+            //     });
+            window.open(
+                "https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/index_einkauf_per_Link.php?array=" +
+                string
+            );
+          
         },
         deleteFromCart(index) {
             this.DELETE_FROM_CART(index);

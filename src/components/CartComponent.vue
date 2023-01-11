@@ -102,7 +102,7 @@ export default {
             'DECREASE_ITEM'
         ]),
         goToStripe() {
-          
+
             // console.log("wwwwwwwwwwwwwW", this.cart_string.slice(0, -1));
 
             // const items = [
@@ -110,7 +110,12 @@ export default {
             //     { name: 'item 2', price: 200 },
             //     { name: 'item 3', price: 300 },
             // ];
-            const string = JSON.stringify(this.cartData);
+            // const string = JSON.stringify(this.cartData);
+            const string =  this.cartData.reduce(
+                (a, b) =>"{" + b.product.ProduktID + "," + b.product.Produkttitel + "," +  b.count + "," + b.product.PreisNetto + ("}" + a),
+                ""
+            );
+            const postTo = JSON.stringify(string);
             // const options = {
             //     method: 'POST',
             //     body: JSON.stringify({ items }),
@@ -123,9 +128,9 @@ export default {
             //     });
             window.open(
                 "https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/index_einkauf_per_Link.php?array=" +
-                string
+                string 
             );
-          
+
         },
         deleteFromCart(index) {
             this.DELETE_FROM_CART(index);

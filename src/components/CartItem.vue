@@ -3,7 +3,7 @@
         <img class="cartitem__image" :src=cartItemData.product.LinkGrafik>
         <div class="cartitem__info">
             <p>{{ cartItemData.product.Produkttitel }}</p>
-            <p>{{ cartItemData.product.PreisNetto }}</p>
+            <!-- <p>{{ cartItemData.product.PreisNetto }}</p> -->
         </div>
 
         <!-- ---teilwind css -->
@@ -94,6 +94,10 @@ export default {
 .del-button{
     margin: 25px 15px;
 }
+.cartitem__info{
+    width: 300px;
+    margin-top: 1rem;
+}
 .cartitem {
     display: flex;
     justify-content: space-between;
@@ -104,7 +108,7 @@ export default {
     margin-bottom: $margin;
     flex-direction: row;
     width: 55%;
-
+    background-color: white;
     &__image {
         max-width: 50px;
     }

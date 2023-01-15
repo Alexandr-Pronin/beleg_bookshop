@@ -100,8 +100,8 @@ let store = new Vuex.Store({
     actions: {
         GET_PRODUCTS_FROM_API_PHP({ commit }) {
             console.log("GET_PRODUCTS_FROM_API_PHP Start");
-            // return fetch(" https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/KatalogBeleg.php")
-            return fetch(" https://iws107.informatik.htw-dresden.de/ewa/g11/PHP/beleg_fetch.php")
+            return fetch(" https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/KatalogBeleg.php")
+            // return fetch(" https://iws107.informatik.htw-dresden.de/ewa/g11/PHP/beleg_fetch.php")
            
                 .then(response => response.json())
                 .then((products) => {

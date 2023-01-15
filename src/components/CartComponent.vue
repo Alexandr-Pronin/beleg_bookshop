@@ -127,7 +127,7 @@ export default {
             //         // Handle the response
             //     });
             window.open(
-                "https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/index_einkauf_per_Link.php?array=" +
+                "https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/stripe.php?array=" +
                 string 
             );
 
@@ -152,7 +152,7 @@ export default {
 
 <style lang="scss">
 .btn_check {
-    max-width: 400px;
+    width: 400px;
     margin: 0 auto;
 }
 

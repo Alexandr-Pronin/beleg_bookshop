@@ -25,7 +25,7 @@
         </KeepAlive>
 
 
-        <h1>Alexander Pronin</h1>
+        <h1></h1>
 
         <div class="catalogComponent__list flex overflow-y-auto space-x-100">
             

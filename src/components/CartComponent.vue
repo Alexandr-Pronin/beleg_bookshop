@@ -50,9 +50,20 @@
                 </div>
             </RouterLink>
 
+            
         </div>
-
+        <div>
+                <transition name="fade">
+                    <div v-if="showPopup"
+                        class="popup-overlay flex justify-between text-red-200 shadow-inner rounded p-3 bg-red-600 mt-5  ">
+                        <p class="self-center"><strong>Moment.. </strong>Erstmal etwas in Korb legen</p>
+                        <button @click="showPopup = false"><strong
+                                class="text-xl align-center cursor-pointer alert-del">&times;</strong></button>
+                    </div>
+                </transition>
+            </div>
     </div>
+    
 </template>
 
 
@@ -73,6 +84,7 @@ export default {
     },
     data() {
         return {
+            showPopup: false,
             cart: [],
         }
     },
@@ -102,34 +114,22 @@ export default {
             'DECREASE_ITEM'
         ]),
         goToStripe() {
-
-            // console.log("wwwwwwwwwwwwwW", this.cart_string.slice(0, -1));
-
-            // const items = [
-            //     { name: 'item 1', price: 100 },
-            //     { name: 'item 2', price: 200 },
-            //     { name: 'item 3', price: 300 },
-            // ];
-            // const string = JSON.stringify(this.cartData);
-            const string =  this.cartData.reduce(
-                (a, b) =>"{" + b.product.ProduktID + "," + b.product.Produkttitel + "," +  b.count + "," + b.product.PreisNetto + ("}" + a),
-                ""
+            const cart = this.cartData.reduce(
+                function (newArr, item) {
+                    newArr.push(item.product.Produkttitel);
+                    newArr.push(item.count);
+                    newArr.push(parseFloat(item.product.PreisNetto) * 100);
+                    newArr.push(item.product.ProduktID);
+                    return newArr;
+                }, []
             );
-            const postTo = JSON.stringify(string);
-            // const options = {
-            //     method: 'POST',
-            //     body: JSON.stringify({ items }),
-            //     headers: { 'Content-Type': 'application/json' },
-            // };
-            // fetch('https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/index_einkauf_per_Link.php', options)
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         // Handle the response
-            //     });
-            window.open(
-                "https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/stripe.php?array=" +
-                string 
-            );
+            const postTo = JSON.stringify(cart);
+            if (cart.length)
+                window.open(
+                    "https://ivm108.informatik.htw-dresden.de/ewa/g10/praktikum_ewa/php/__STRIPE_DEMOS_2022/stripe.php?array=" +
+                    postTo, "_self"
+                );
+            else this.showPopup = true
 
         },
         deleteFromCart(index) {
@@ -200,6 +200,16 @@ export default {
     .cartcomponent__totalText {
         margin: $margin;
         font-size: 20px;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
     }
 
 }
